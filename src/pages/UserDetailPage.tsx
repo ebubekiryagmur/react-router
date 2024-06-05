@@ -1,5 +1,32 @@
 import { Link, useLoaderData, useParams } from 'react-router-dom';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import styled from 'styled-components';
+
+const SelectContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+`;
+
+const SelectOption = styled(Link)`
+    padding: 10px;
+    border-bottom: 1px solid #ced4da;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: #e9ecef;
+    }
+`;
+
 
 
 interface User {
@@ -25,13 +52,12 @@ function UserDetailPage() {
         <p>Username: {user.name}</p>
         <p>Email: {user.email}</p>
 
-         <NavDropdown title="Details" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to={`/users/${userId}/Posts`}>Posts</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={`/users/${userId}/Albums`}>Album</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={`/users/${userId}/Todos`}>Todos</NavDropdown.Item>
-              <NavDropdown.Divider />
-              
-            </NavDropdown>
+     <SelectContainer>
+            <SelectOption to={`/users/${userId}/Posts`}>Posts</SelectOption>
+            <SelectOption to={`/users/${userId}/Albums`}>Albums</SelectOption>
+            <SelectOption to={`/users/${userId}/Todos`}>Todos</SelectOption>
+        </SelectContainer>
+    
 
     </>
   )
