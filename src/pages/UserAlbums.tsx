@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 interface AlbumProps {
     userId: number;
@@ -22,7 +22,9 @@ function UserAlbums() {
         <h2>Album</h2>
         <ul>
             {albums.map(album => (
-                <li key={album.id}>{album.title}</li>
+                <li key={album.id}>
+                  <Link to={`/users/${album.userId}/albums/${album.id}`}>{album.title}</Link>
+                </li>
             ))}
         </ul>
     </>

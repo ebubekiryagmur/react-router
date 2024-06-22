@@ -8,6 +8,9 @@ import { userLoader } from './pages/UserDetailPage';
 import { usersAlbumsLoader } from './pages/UserAlbums';
 import { userPostsLoader } from './pages/UserPosts';
 import { userTodosLoader } from './pages/UserTodos';
+import AlbumDetails, { albumLoader } from './pages/AlbumDetails';
+import PostDetails, { postLoader } from './pages/PostDetails';
+import FavoritesPage from './pages/FavoritesPage';
 
 const router = createBrowserRouter([
    {
@@ -48,6 +51,20 @@ const router = createBrowserRouter([
           }
         ]
        
+      },
+      {
+        path: "users/:usersId/albums/:albumId",
+        element: <AlbumDetails />,
+        loader: albumLoader,
+      },
+      {
+        path : "/users/:userId/posts/:postId",
+        element: <PostDetails />,
+        loader: postLoader,
+      },
+      {
+        path: "favorites",
+        element: <FavoritesPage />,
       }
     ]
    }
